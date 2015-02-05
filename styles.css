@@ -1,0 +1,8 @@
+article img {
+  max-width: 300px; }
+
+.editBook {
+  display: none; }
+
+.show {
+  display: block; }

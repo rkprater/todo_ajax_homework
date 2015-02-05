@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My To-Do's!</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="styles.css">
+  <script type="html/template" id="todoTmpl">
+    <article data-todoid="<%= _id %>">
+      <h3><%= title %></h3>
+      <h4><%= date %></h4>
+      <p><%= content %></p>
+      <button class="deleteTodo">Delete</button> | <button class="showEditTodo">Edit</button>
+      <form class="editTodo" action="">
+        <div class="form-group">
+          <input type="text" class="form-control" name="edittitle" value="<%= title %>">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="editDate" value="<%= date %>">
+        </div>
+        <div class="form-group">
+          <textarea name="editContent" class="form-control" id="" cols="30" rows="10">
+            <%= content %>
+          </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit To-Do</button>
+      </form>
+    </article>
+  </script>
+</head>
+<body>
+<header>
+  <div class="jumbotron">
+    <h1>My To-do's!</h1>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <section class="col-md-8">
+
+    <article>
+      <img src="http://placehold.it/200/400" alt="">
+      <h3>To-do Title</h3>
+      <p>Synopsis Lorem ipsum dolor sit amet</p>
+    </article>
+    </section>
+    <aside class="col-md-4">
+      <form id="createTodo" action="">
+        <div class="form-group">
+          <input type="text" class="form-control" name="newTitle">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="newDate">
+        </div>
+        <div class="form-group">
+          <textarea name="newContent" class="form-control" id="" cols="30" rows="10"></textarea>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Add To-Do</button>
+      </form>
+    </aside>
+  </div>
+</div>
+<footer></footer>
+
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="main.js"></script>
+</body>
+</html>
