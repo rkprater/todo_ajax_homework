@@ -1,61 +1,61 @@
 $(document).ready(function () {
-  todo.init();
+  ToDo.init();
 
 });
 
 
-var todo = {
+var ToDo = {
 
   init: function () {
-    todo.initStyling();
-    todo.initEvents();
+    ToDo.initStyling();
+    ToDo.initEvents();
 
   },
   initStyling: function () {
-    todo.renderTodo();
+    ToDo.renderTask();
   },
   initEvents: function () {
 
-    $('section').on('click', '.showEditTodo', function (event) {
+    $('section').on('click', '.showEditTask', function (event) {
       event.preventDefault();
-      $(this).closest('article').find('.editTodo').toggleClass('show');
+      $(this).closest('article').find('.editTask').toggleClass('show');
     });
 
-    $('section').on('submit', '.editTodo', function (event) {
+    $('section').on('submit', '.editTask', function (event) {
       event.preventDefault();
-      var todoId = $(this).closest('article').data('todoid');
-      var editedTodo = {
-        title: $(this).find('input[name="editTitle"]').val(),
-        date:  $(this).find('input[name="newDate"]').val(),
-        content: $(this).find('textarea[name="newContent"]').val()
+      var ToDoId = $(this).closest('article').data('todoid');
+      var editedToDo = {
+        Task: $(this).find('input[name="editTask"]').val(),
+        description: $(this).find('textarea[name="editDescription"]').val(),
+        deadline: $(this).find('input[name="editDeadline"]').val()
       };
 
-      todo.updateTodo(todoId, editedTodo);
+      ToDo.updateTask(ToDoId, editedToDo);
 
 
     });
 
-    $('#createTodo').on('submit', function (event) {
+    $('#createTask').on('submit', function (event) {
       event.preventDefault();
-        var newTodo = {
-          title: $(this).find('input[name="editTitle"]').val(),
-          date: $(this).find('input[name="newDate"]').val(),
-          content: $(this).find('textarea[name="newContent"]').val()
-        };
+      var newTask = {
+        Task: $(this).find('input[name="newTask"]').val(),
+        description: $(this).find('textarea[name="newDescription"]').val(),
+        deadline: $(this).find('input[name="newDeadline"]').val()
+      };
 
-        todo.createTodo(newTodo);
+      ToDo.createTask(newTask);
     });
 
-    $('section').on('click', '.deleteTodo', function (event) {
+    $('section').on('click', '.deleteTask', function (event) {
       event.preventDefault();
-       var todoId = $(this).closest('article').data('todoid');
-       console.log(todoId);
-       todo.deleteTodo(todoId);
+      var ToDoId = $(this).closest('article').data('todoid');
+      console.log(ToDoId);
+      ToDo.deleteTask(ToDoId);
     });
 
   },
   config: {
-    url: 'http://tiy-fee-rest.herokuapp.com/collections/awesomeOne',
+    url: 'http://tiy-fee-rest.herokuapp.com/collections/rkprater',
 
   },
   render: function (data, tmpl, $el) {
@@ -63,15 +63,15 @@ var todo = {
 
     $el.append(template);
   },
-  renderTodo: function () {
+  renderTask: function () {
     $.ajax({
-      url: todo.config.url,
+      url: ToDo.config.url,
       type: 'GET',
-      success: function (todo) {
-      //  console.log(todo);
-        var template = _.template($('#todoTmpl').html());
+      success: function (ToDo) {
+        console.log(ToDo);
+        var template = _.template($('#ToDoTmpl').html());
         var markup = "";
-        todo.forEach(function (item, idx, arr) {
+        ToDo.forEach(function (item, idx, arr) {
           markup += template(item);
         });
         console.log('markup is.....', markup);
@@ -82,15 +82,15 @@ var todo = {
       }
     });
   },
-  createTodo: function (book) {
+  createTask: function (task) {
 
     $.ajax({
-      url: todo.config.url,
-      data: todo,
+      url: ToDo.config.url,
+      data: task,
       type: 'POST',
       success: function (data) {
         console.log(data);
-        todo.renderTodo();
+        ToDo.renderTask();
       },
       error: function (err) {
         console.log(err);
@@ -98,14 +98,14 @@ var todo = {
     });
 
   },
-  deleteTodo: function (id) {
+  deleteTask: function (id) {
 
     $.ajax({
-      url: todo.config.url + '/' + id,
+      url: ToDo.config.url + '/' + id,
       type: 'DELETE',
       success: function (data) {
         console.log(data);
-        books.renderTodo();
+        ToDo.renderTask();
       },
       error: function (err) {
         console.log(err);
@@ -115,15 +115,15 @@ var todo = {
 
 
   },
-  updateTodo: function (id, todo) {
+  updateTask: function (id, task) {
 
     $.ajax({
-      url: todo.config.url + '/' + id,
-      data: todo,
+      url: ToDo.config.url + '/' + id,
+      data: task,
       type: 'PUT',
       success: function (data) {
         console.log(data);
-        todo.renderTodo();
+        ToDo.renderTask();
       },
       error: function (err) {
         console.log(err);
@@ -131,6 +131,6 @@ var todo = {
     });
 
 
-  },
+  }
 
 };

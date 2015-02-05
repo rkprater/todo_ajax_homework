@@ -2,74 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My To-Do's!</title>
+  <title>To Do</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="styles.css">
-  <script type="html/template" id="todoTmpl">
-    <article data-todoid="<%= _id %>">
-      <h3><%= title %></h3>
-      <h4><%= date %></h4>
-      <p><%= content %></p>
-      <button class="deleteTodo">Delete</button> | <button class="showEditTodo">Edit</button>
-      <form class="editTodo" action="">
-        <div class="form-group">
-          <input type="text" class="form-control" name="edittitle" value="<%= title %>">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="editDate" value="<%= date %>">
-        </div>
-        <div class="form-group">
-          <textarea name="editContent" class="form-control" id="" cols="30" rows="10">
-            <%= content %>
-          </textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Edit To-Do</button>
-      </form>
-    </article>
+  <script type="html/template" id="ToDoTmpl">
+  <article data-todoid="<%= _id %>">
+  <h3><%= Task %></h3>
+  <h4><%= description %></h4>
+  <p><%= deadline %></p>
+  <button class="deleteTask">Delete</button> | <button class="showEditTask">Edit</button>
+  <form class="editTask" action="">
+  <div class="form-group">
+  <input type="text" class="form-control" name="editTask" value="<%= Task %>">
+  </div>
+  <div class="form-group">
+  <textarea name="editDescription" class="form-control" id="" cols="30" rows="10">
+  <%= description %></textarea>
+  </div>
+  <div class="form-group">
+  <input type="text" class="form-control" name="editDeadline" value="<%= deadline %>">
+  </div>
+  <button type="submit" class="btn btn-primary">Edit To-Do List</button>
+  </form>
+  </article>
   </script>
 </head>
 <body>
-<header>
-  <div class="jumbotron">
-    <h1>My To-do's!</h1>
+  <header>
+    <div class="jumbotron">
+      <h1>My To-Do List!</h1>
+      <<img class="steven" src="http://stevensegallery.com/g/200/300" alt="">
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <section class="col-md-8">
+
+        <article>
+          <h3></h3>
+          <h4></h4>
+          <p></p>
+        </article>
+      </section>
+      <aside class="col-md-4">
+        <form id="createTask" action="">
+          <div class="form-group">
+            <input type="text" class="form-control" name="newTask" placeholder="Task name">
+          </div>
+          <div class="form-group">
+            <textarea name="newDescription" class="form-control" id="" cols="30" rows="10" placeholder="Description of task"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="newDeadline" placeholder="Deadline">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+      </aside>
+    </div>
   </div>
-</header>
-<div class="container">
-  <div class="row">
-    <section class="col-md-8">
-
-    <article>
-      <img src="http://placehold.it/200/400" alt="">
-      <h3>To-do Title</h3>
-      <p>Synopsis Lorem ipsum dolor sit amet</p>
-    </article>
-    </section>
-    <aside class="col-md-4">
-      <form id="createTodo" action="">
-        <div class="form-group">
-          <input type="text" class="form-control" name="newTitle">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="newDate">
-        </div>
-        <div class="form-group">
-          <textarea name="newContent" class="form-control" id="" cols="30" rows="10"></textarea>
-        </div>
+  <footer></footer>
 
 
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
-        <button type="submit" class="btn btn-primary">Add To-Do</button>
-      </form>
-    </aside>
-  </div>
-</div>
-<footer></footer>
-
-
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/underscore/underscore.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
