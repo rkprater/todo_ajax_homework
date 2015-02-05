@@ -55,7 +55,7 @@ var ToDo = {
 
   },
   config: {
-    url: 'http://tiy-fee-rest.herokuapp.com/collections/rkprater',
+    url: 'http://tiy-fee-rest.herokuapp.com/collections/prater',
 
   },
   render: function (data, tmpl, $el) {
